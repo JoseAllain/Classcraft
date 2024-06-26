@@ -1,0 +1,42 @@
+<app-nav-home></app-nav-home>
+<img class="background-image" src="./assets/fondo2.jpg" alt="Descripción de la imagen">
+
+<div class="login-container">
+  <h1>REGISTRARSE COMO PROFESOR</h1>
+
+  <form id="registrationForm">
+    <div class="input-group">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" [(ngModel)]="maestro.nombre" name="nombre" required>
+      <!-- Manejo de errores -->
+      <span class="error-message" *ngIf="!validateName(maestro.nombre)">No es un nombre vaildo</span>
+    </div>
+
+    <div class="input-group">
+      <label for="apellido">Apellidos:</label>
+      <input type="text" id="apellido" [(ngModel)]="maestro.apellido" name="apellido" required>
+      <!-- Manejo de errores -->
+      <span class="error-message" *ngIf="!validateName(maestro.apellido)">No es un apellido vaildo</span>
+    </div>
+
+    <div class="input-group">
+      <label for="correo">Correo:</label>
+      <input type="email" id="correo" [(ngModel)]="maestro.correo" name="correo" required>
+      <!-- Manejo de errores -->
+      <span class="error-message" *ngIf="!validarCorreo(maestro.correo)">El correo debe tener un formato valido.</span>
+    </div>
+
+    <div class="input-group">
+      <label for="clave">Contraseña:</label>
+      <input type="password" id="clave" [(ngModel)]="maestro.clave" name="clave" required>
+      <!-- Manejo de errores -->
+      <span class="error-message" *ngIf="!validarContrasena(maestro.clave)">La contraseña debe contener al menos 5 caracteres y un numero.</span>
+
+      <p>Elegiste mal? <a routerLink="/registro">Selecciona otra vez.</a></p>
+    </div>
+
+    <button type="submit" (click)="singup()">Registrarse</button>
+  </form>
+
+
+</div>

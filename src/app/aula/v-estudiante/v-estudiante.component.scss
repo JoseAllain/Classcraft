@@ -1,0 +1,86 @@
+/* Estilos para el contenedor principal del componente */
+.app-aula {
+  margin: 20px; /* Margen exterior */
+}
+
+/* Estilos para la barra superior */
+.barra {
+  background-color: rgb(255, 255, 255);
+  height: 80px;
+  margin-top: -20px;
+  margin-left: -20px;
+  width: calc(100% + 40px); /* Ajustar para compensar los márgenes negativos */
+  display: flex;
+  justify-content: flex-start; /* Alinear a la izquierda */
+  align-items: center;
+  padding: 0 20px; /* Espaciado interno */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+
+
+.boton button {
+  background: #007bff;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  color: #ffffff; /* Color de texto */
+  font: inherit;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.boton button:hover {
+  background: #f2f2f2; /* Cambio de color al pasar el mouse */
+}
+
+/* Estilos para las tarjetas de cursos */
+.card {
+  display: flex; /* Mostrar como flexbox */
+  flex-wrap: wrap; /* Envolver las tarjetas cuando no quepan en una sola línea */
+  gap: 20px; /* Espacio entre tarjetas */
+  margin-top: 20px; /* Espacio superior */
+}
+
+.course-card {
+  width: calc(33.33% - 20px); /* Ancho de cada tarjeta */
+  background-color: #f0f0f0; /* Color de fondo */
+  padding: 20px; /* Espacio interno */
+  margin-bottom: 20px; /* Margen inferior */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+  transition: transform 0.2s ease-out; /* Transición suave */
+}
+
+.course-card:hover {
+  transform: translateX(10px); /* Efecto al pasar el mouse */
+}
+
+.course-card h3 {
+  margin-top: 0; /* Eliminar margen superior */
+}
+
+.course-card p {
+  margin-bottom: 10px; /* Margen inferior */
+}
+
+.course-card img {
+  max-width: 100%; /* Ancho máximo */
+  height: auto; /* Altura automática */
+  border-radius: 4px; /* Bordes redondeados */
+}
+
+#myBtn {
+  background: #007bff; /* Fondo azul */
+  color: #ffffff; /* Texto blanco */
+  font-size: 16px; /* Tamaño de fuente */
+  padding: 10px 20px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+#myBtn:hover {
+  background: #0056b3; /* Color de fondo al pasar el mouse */
+}

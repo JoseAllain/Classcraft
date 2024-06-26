@@ -1,0 +1,46 @@
+<app-aula> 
+
+    
+    <div class="card-container">
+
+
+        <a class="card"  (click)="mostrarCursos()">
+            <div class="card-content">
+                <h3>HIJO NRO 1</h3>
+        
+            </div>
+        </a>
+        <a class="card"  (click)="mostrarCursos()">
+            <div class="card-content">
+                <h3>HIJO NRO 2</h3>
+        
+            </div>
+        </a>
+        <a class="card"  (click)="mostrarCursos()">
+            <div class="card-content">
+                <h3>HIJO NRO 3</h3>
+        
+            </div>
+        </a>
+
+    </div>
+
+
+    <div style="text-align:center">
+
+        <div *ngIf="isVisible" class="card-container">
+          <a (click)="irAPagina('/aula/delatllesCurso')" class="card" *ngFor="let curso of courses">
+            <div class="card-content">
+              <h3>{{ curso.nombre }}</h3>
+              <p>Periodo: {{ curso.periodo }}</p>
+              <img [src]="curso.imagenUrl" alt="{{ curso.nombre }}">
+            </div>
+          </a>
+        </div>
+      </div>
+
+
+
+      
+    
+</app-aula>

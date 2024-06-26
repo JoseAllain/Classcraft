@@ -1,0 +1,22 @@
+<app-aula>
+  <div class="barra">
+    <div class="boton">
+      <button id="myBtn" (click)="openModal()">+ Agregar un Curso</button>
+    </div>
+  </div>
+
+  <div class="card-container" *ngIf="cursos.length > 0; else noCursos">
+    <div class="card" *ngFor="let curso of cursos" (click)="irAPagina('/contenidoProfesor/contenidoprofe')">
+      <div class="course-card">
+        <h3>{{ curso.nombre }}</h3>
+        <p>Descripción: {{ curso.descripcion }}</p>
+        </div>
+      </div>
+    </div>
+
+  <ng-template #noCursos>
+    <p>No hay cursos disponibles.</p>
+  </ng-template>
+
+  <app-modal [isVisible]="isModalVisible" (close)="closeModal()" (submit)="addCourse($event)"></app-modal>
+  </app-aula>

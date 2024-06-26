@@ -1,0 +1,40 @@
+<app-dropdown-menu (optionSelected)="onMenuOptionSelected($event)"></app-dropdown-menu>
+
+<div class="container">
+  <div class="column-30">
+    <div *ngIf="showSentMessages && selectedUser">
+      <h2>Mensajes Enviados</h2>
+      <div *ngFor="let message of sentMessages" class="message-container">
+        <div class="message" (click)="selectMessage(message)">
+          <span>{{ message.text }}</span>
+          <span class="timestamp">{{ message.timestamp | date:'short' }}</span>
+        </div>
+      </div>
+    </div>
+  
+    <div class="chat-window" *ngIf="!showSentMessages && allMessages.length > 0">
+      <div *ngFor="let userMessages of allMessages" class="user-messages">
+        <div *ngFor="let message of userMessages.messages" class="message-container">
+          <div class="message" (click)="selectMessage(message)">
+            <span>{{ message.text }}</span>
+            <span class="timestamp">{{ message.timestamp | date:'short' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  <div class="column-70">
+    <div class="message-details" *ngIf="selectedMessage">
+      <h2>{{ selectedMessage.asunto }}</h2>
+      <p><strong>Texto del Mensaje:</strong> {{ selectedMessage.text }}</p>
+      <p><strong>Fecha y Hora:</strong> {{ selectedMessage.timestamp | date:'medium' }}</p>
+      <p *ngIf="selectedMessage.user"><strong>Usuario:</strong> {{ selectedMessage.user.name }}</p>
+    </div>
+  </div>
+  
+  
+
+</div>

@@ -1,0 +1,23 @@
+<app-aula>
+  <div>
+    <div class="boton">
+      <button (click)="showModal()">+ Unirme a un Curso</button>
+    </div>
+
+
+    <app-modal-e
+      [isVisible]="isVisible"
+      [errorMessage]="errorMessage"
+      (close)="closeModal()"
+      (submit)="joinCourse($event)">
+    </app-modal-e>
+
+    <div class="card" (click)="irAPagina('/aula/delatllesCurso')">
+      <div *ngFor="let course of cursos" class="course-card">
+        <h3>{{ course.nombre }}</h3>
+        <p>{{ course.descripcion }}</p>
+      </div>
+    </div>
+  </div>
+</app-aula>
+

@@ -1,0 +1,56 @@
+// tab-panel.component.scss
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 100px 1fr; // Primera columna de 100px, segunda columna ocupa el resto del espacio
+  grid-template-rows: 100px 1fr; // Primera fila de 100px, segunda fila ocupa el resto del espacio
+  height: 100vh;
+  width: 100%;
+}
+
+.sidebar {
+  grid-row: 1 / span 2; // Ocupa ambas filas
+  background-color: #0056a3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+
+  a {
+    text-decoration: none;
+    margin-top: 20px;
+    color: black;
+
+    img, .icon {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+.header {
+  grid-column: 2; // Ocupa la segunda columna
+  background-color: #0073d5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  grid-column: 2; // Ocupa la segunda columna
+  grid-row: 2; // Ocupa la segunda fila
+  padding: 10px;
+  overflow: auto;
+}

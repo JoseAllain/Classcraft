@@ -1,0 +1,23 @@
+<app-nav-home></app-nav-home>
+<img class="background-image" src="./assets/fondo2.jpg" alt="Descripción de la imagen">
+
+<div class="login-container">
+  <h1>Iniciar Sesión</h1>
+
+  <form>
+    <div class="input-group">
+      <label for="correo">Correo:</label>
+      <input type="email" id="correo" name="email" [(ngModel)]="usuario.correo" required>
+    </div>
+
+    <div class="input-group">
+      <label for="contrasena">Contraseña:</label>
+      <input type="password" id="contrasena" name="password" [(ngModel)]="usuario.contrasena" required>
+
+      <p>¿No tienes cuenta? <a routerLink="/registro">Regístrate aquí</a></p>
+    </div>
+
+    <button type="submit" (click)="iniciarSesion()">Iniciar Sesión</button>
+  </form>
+</div>
+

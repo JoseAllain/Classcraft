@@ -1,0 +1,73 @@
+
+.accordion {
+  margin: 20px;
+}
+
+input[type="text"], input[type="file"] {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #007BFF;
+  border-radius: 4px;
+}
+
+button {
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer !important;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: 1px solid #007BFF;
+  margin-bottom: 5px;
+}
+
+.accordion-header h2 {
+  margin: 0;
+}
+
+.accordion-content {
+  padding: 10px;
+  border: 1px solid #007BFF;
+  border-top: none;
+  margin-bottom: 10px;
+}
+.card-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.card {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #007BFF;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+.contenidoArchivos {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  width: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  border-color: #007BFF;
+}
+.icon {
+  margin-right: 10px;
+}
+.icon svg {
+  width: 24px;
+  height: 24px;
+}

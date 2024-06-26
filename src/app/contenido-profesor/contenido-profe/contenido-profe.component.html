@@ -1,0 +1,47 @@
+<app-aula2>
+  <div class="accordion">
+    <input [(ngModel)]="newPanelTitle" placeholder="Nombre de la semana" />
+    <button class="botnagregar" (click)="addPanel()">+</button>
+    <div *ngFor="let panel of panelService.getPanels()">
+      <div class="accordion-header" (click)="togglePanel(panel)">
+        <h2>{{ panel.title }}</h2>
+        <span>{{ panel.isOpen ? '-' : '+' }}</span>
+      </div>
+      <div class="accordion-content" *ngIf="panel.isOpen">
+        <p>{{ panel.content }}</p>
+        <div class="card-input">
+          <input [(ngModel)]="panel.newCardName" placeholder="Nombre del modulo" />
+          <button (click)="addCard(panel)">Agregar Card +</button>
+        </div>
+        <div *ngFor="let card of panel.cards" class="card">
+          <h3>{{ card.name }}</h3>
+          <input type="file" (change)="onFileSelected($event, card)" multiple />
+          <div *ngFor="let file of card.files">
+            {{ file.name }}
+          </div>
+          <div>
+            <button class="boton-archivo">Subir archivo</button>
+          </div>
+
+         
+
+        </div>
+
+        <div class="contenidoArchivos">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" />
+            </svg>
+          </div>
+          <span> Contenido del archivo</span>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  
+
+
+</app-aula2>
+

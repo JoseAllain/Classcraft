@@ -1,0 +1,13 @@
+<div class="modal" [ngClass]="{'show': isVisible}" (click)="onClose()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close" (click)="onClose()">&times;</span>
+    <h2>Unirme al Curso</h2>
+    <div class="form-group">
+      <label for="nombre">Código del Curso</label>
+      <input type="text" id="nombre" name="nombre" [(ngModel)]="courseCode">
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    </div>
+    <button (click)="onSubmit()">Agregar</button>
+  </div>
+</div>
+

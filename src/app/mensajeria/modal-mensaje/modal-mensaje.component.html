@@ -1,0 +1,33 @@
+<div class="modal-backdrop" (click)="onNoClick()"></div>
+<div class="modal">
+  <div class="modal-header">
+    <h2>Enviar Mensaje</h2>
+    <button class="close-button" (click)="onNoClick()"></button>
+  </div>
+  <div class="modal-content">
+    <div>
+      <label for="course">Curso:</label>
+      <select id="course" [(ngModel)]="selectedCourse" (change)="onCourseChange()">
+        <option *ngFor="let course of courses" [ngValue]="course">{{ course.name }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="user">Usuario:</label>
+      <select id="user" [(ngModel)]="selectedUser" [disabled]="!selectedCourse">
+        <option *ngFor="let user of users" [ngValue]="user">{{ user.name }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="asunto">Asunto:</label>
+      <input id="asunto" [(ngModel)]="asunto" >
+    </div>
+    <div>
+      <label for="message">Mensaje:</label>
+      <textarea id="message" [(ngModel)]="message" placeholder="Escribe tu mensaje..."></textarea>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button (click)="onNoClick()">Cancelar</button>
+    <button (click)="sendMessage()" [disabled]="!selectedUser || !asunto">Enviar</button>
+  </div>
+</div>

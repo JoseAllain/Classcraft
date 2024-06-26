@@ -1,0 +1,54 @@
+.tarjeta {
+  display: flex;
+  background-color: #D9D9D9;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  height: 100%; /* La tarjeta ocupa todo el espacio disponible */
+}
+
+.contenido {
+  flex: 1; /* El contenido ocupa todo el espacio disponible que queda */
+  overflow-y: auto; /* Agregar scroll si es necesario */
+}
+
+.pie {
+  margin-top: 10px; /* Espacio entre el contenido y el pie */
+}
+
+.escribirM {
+  display: flex;
+  align-items: center; /* Para alinear verticalmente los elementos dentro de escribirM */
+}
+
+.escribirM input {
+  flex: 1; /* El input ocupa todo el espacio disponible */
+  margin-right: 10px; /* Espacio entre el input y el botón */
+}
+
+
+.escribirM button {
+  min-width: 80px; /* Ancho mínimo del botón, ajusta según sea necesario */
+
+}
+.selected-user {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.chat-input {
+  display: flex;
+  justify-content: flex-end;
+}
+.chat-input button{
+  background-color: #0056a3;
+  color: white; /* Color del texto */
+  font-size: 18px; /* Tamaño del texto */
+  padding: 10px 20px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  transition: background-color 0.3s ease;
+}
+.chat-input button:hover {
+  background-color: #184981; /* Color de fondo al pasar el ratón */
+}

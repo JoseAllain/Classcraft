@@ -1,0 +1,162 @@
+body {
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  flex-direction: column;
+  min-height: 100vh; /* Asegúrate de que el body ocupe al menos toda la altura del viewport */
+  margin: 0;
+}
+/* REGRISTRARSE */
+
+
+/* INICIO DE SESION */
+
+
+.login-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.selector-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.login-container h1 {
+  text-align: center;
+  color: #0056a3;
+  margin-bottom: 30px;
+}
+
+.selector-container h1 {
+  text-align: center;
+  color: rgb(0, 86, 163);
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.input-group input[type="email"],
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
+  outline: none;
+  font-size: 16px;
+
+}
+
+.input-group p{
+  margin-top: 15px;
+}
+
+
+.login-container button {
+  width: 80%;
+  padding: 12px;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-container button:hover {
+  background-color: #0056b3;
+}
+
+.estudiante{
+  padding: 10px 25px;
+  background-color: #ffffff; /* Color de fondo */
+  color: #0056a3; /* Color de texto */
+  border-radius: 5px; /* Bordes redondeados */
+  font-weight: bold; /* Texto en negrita */
+  text-decoration: none; /* Remueve el subrayado del enlace */
+  transition: background-color 0.3s ease; /* Efecto de transición al pasar el mouse */
+  border: 2px solid #000; /* Borde sólido de 2 píxeles de grosor y color negro */
+  cursor: pointer
+
+}
+
+.padre{
+  padding: 10px 25px;
+  background-color: #ffffff; /* Color de fondo */
+  color: #0056a3; /* Color de texto */
+  border-radius: 5px; /* Bordes redondeados */
+  font-weight: bold; /* Texto en negrita */
+  text-decoration: none; /* Remueve el subrayado del enlace */
+  transition: background-color 0.3s ease; /* Efecto de transición al pasar el mouse */
+  border: 2px solid #000; /* Borde sólido de 2 píxeles de grosor y color negro */
+  margin-top: 15px;
+  cursor: pointer
+
+}
+
+.profesor{
+  padding: 10px 25px;
+  background-color: #ffffff; /* Color de fondo */
+  color: #0056a3; /* Color de texto */
+  border-radius: 5px; /* Bordes redondeados */
+  font-weight: bold; /* Texto en negrita */
+  text-decoration: none; /* Remueve el subrayado del enlace */
+  transition: background-color 0.3s ease; /* Efecto de transición al pasar el mouse */
+  border: 2px solid #000; /* Borde sólido de 2 píxeles de grosor y color negro */
+  margin-top: 15px;
+  cursor: pointer
+
+}
+
+a {
+  text-decoration: none; /* Remueve el subrayado del enlace */
+}
+/* Estilos para el contenedor de la imagen de fondo */
+.background-image {
+  position: relative;
+  width: 100%;
+  height: 750px; /* Ajusta la altura según tus necesidades */
+}
+
+
+
+/* Estilos para la imagen de fondo */
+.background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen al tamaño del contenedor */
+  display: block;/*1*/
+}
