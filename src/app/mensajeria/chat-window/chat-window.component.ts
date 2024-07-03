@@ -1,64 +1,58 @@
-import { Component, OnInit } from '@angular/core';
-import { DatePipe, NgForOf, NgIf } from "@angular/common";
-import { ChatService, Message, User } from "../../@api/mensajeria/chat.service";
-import { DropdownMenuComponent } from "../dropdown-menu/dropdown-menu.component";
+import { Component } from '@angular/core';
+import {MensajeResponse, MensajeriaService} from "../../@api/apiMensajes/mensajeria.service";
+import {DatePipe, NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-chat-window',
   standalone: true,
   imports: [
-    NgIf,
     NgForOf,
     DatePipe,
-    DropdownMenuComponent,
+    NgIf
   ],
   templateUrl: './chat-window.component.html',
-  styleUrls: ['./chat-window.component.scss'] // Corrección aquí, era 'styleUrl'
+  styleUrl: './chat-window.component.scss'
 })
-export class ChatWindowComponent implements OnInit {
-  selectedUser: User | null = null;
-  allMessages: { user: User, messages: Message[] }[] = [];
-  sentMessages: Message[] = [];
-  showSentMessages: boolean = false;
-  selectedMessage: Message | null = null;
+export class ChatWindowComponent {
+  mensajes: MensajeResponse[] = [];
+  mensajeSeleccionado: MensajeResponse | null = null;
+  userId: number = Number(localStorage.getItem('id')); // Asume que tienes el ID del usuario actual, ajusta según sea necesario
+  tipoMensajes: 'recibidos' | 'enviados' = 'recibidos';
 
-  constructor(private chatService: ChatService) {}
+  constructor(private mensajeriaService: MensajeriaService) {}
 
   ngOnInit(): void {
-    this.chatService.selectedUser$.subscribe(user => {
-      this.selectedUser = user;
-      if (user) {
-        this.chatService.getMessages(user.id).subscribe(messages => {
-          this.sentMessages = messages;
-        });
+    this.cargarMensajes();
+  }
+
+  cargarMensajes(): void {
+    const observable = this.tipoMensajes === 'recibidos'
+      ? this.mensajeriaService.getMensajesRecibidos(this.userId)
+      : this.mensajeriaService.getMensajesEnviados(this.userId);
+
+    observable.subscribe({
+      next: (mensajes) => {
+        this.mensajes = this.ordenarMensajesPorFecha(mensajes);
+      },
+      error: (error) => {
+        console.error(`Error al cargar los mensajes ${this.tipoMensajes}:`, error);
       }
     });
+  }
 
-    this.chatService.getAllMessages().subscribe(allMessages => {
-      this.allMessages = allMessages;
+  ordenarMensajesPorFecha(mensajes: MensajeResponse[]): MensajeResponse[] {
+    return mensajes.sort((a, b) => {
+      return new Date(b.fechaEnvio).getTime() - new Date(a.fechaEnvio).getTime();
     });
   }
 
-  onMenuOptionSelected(option: string): void {
-    if (option === 'sent' && this.selectedUser) {
-      this.chatService.getSentMessages(this.selectedUser.id).subscribe(messages => {
-        this.sentMessages = messages;
-        this.showSentMessages = true;
-      });
-    } else {
-      this.showSentMessages = false;
-    }
+  seleccionarMensaje(mensaje: MensajeResponse): void {
+    this.mensajeSeleccionado = mensaje;
   }
 
-  selectMessage(message: Message): void {
-    this.selectedMessage = {
-      ...message,
-      asunto: message.asunto, // Asegúrate de asignar correctamente el campo asunto
-    };
-  }
-
-  deleteMessage(userId: string, messageId: string): void {
-    this.chatService.deleteMessage(userId, messageId);
-    // Aquí podrías actualizar sentMessages u otras propiedades si es necesario
+  cambiarTipoMensajes(tipo: 'recibidos' | 'enviados'): void {
+    this.tipoMensajes = tipo;
+    this.mensajeSeleccionado = null;
+    this.cargarMensajes();
   }
 }

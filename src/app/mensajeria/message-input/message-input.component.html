@@ -1,4 +1,4 @@
 <div class="chat-input">
-  <button (click)="openMessageModal()">Redactar Mensaje</button>
+  <button class="mensaje" (click)="openMessageModal()">Redactar Mensaje</button>
   <app-modal-mensaje *ngIf="showModal" (closeModal)="closeMessageModal()"></app-modal-mensaje>
 </div>

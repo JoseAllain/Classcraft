@@ -1,33 +1,40 @@
-<div class="modal-backdrop" (click)="onNoClick()"></div>
+<div class="modal-backdrop" (click)="closeModal2()"></div>
 <div class="modal">
   <div class="modal-header">
     <h2>Enviar Mensaje</h2>
-    <button class="close-button" (click)="onNoClick()"></button>
+    <button class="close-button" (click)="closeModal2()"></button>
   </div>
   <div class="modal-content">
     <div>
-      <label for="course">Curso:</label>
-      <select id="course" [(ngModel)]="selectedCourse" (change)="onCourseChange()">
-        <option *ngFor="let course of courses" [ngValue]="course">{{ course.name }}</option>
+      <label for="course">Rol</label>
+      <select id="course" [(ngModel)]="rol" (change)="actualizarUsuarios();">
+        <option>No especificado</option>
+        <option>Maestro</option>
+        <option>Estudiante</option>
       </select>
     </div>
     <div>
-      <label for="user">Usuario:</label>
-      <select id="user" [(ngModel)]="selectedUser" [disabled]="!selectedCourse">
-        <option *ngFor="let user of users" [ngValue]="user">{{ user.name }}</option>
+      <label for="user">Usuarios</label>
+      <select id="user" [(ngModel)]="mensaje.nombreDestinatario">
+        <option *ngFor="let nombre of usuarios" [value]="nombre">{{ nombre }}</option>
       </select>
     </div>
     <div>
-      <label for="asunto">Asunto:</label>
-      <input id="asunto" [(ngModel)]="asunto" >
-    </div>
-    <div>
-      <label for="message">Mensaje:</label>
-      <textarea id="message" [(ngModel)]="message" placeholder="Escribe tu mensaje..."></textarea>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button (click)="onNoClick()">Cancelar</button>
-    <button (click)="sendMessage()" [disabled]="!selectedUser || !asunto">Enviar</button>
+  <div class="modal-content">
+    <form (ngSubmit)="sendMensaje()">
+      <div>
+        <label for="asunto">Asunto:</label>
+        <input id="asunto" [(ngModel)]="mensaje.asunto" name="asunto" required>
+      </div>
+      <div>
+        <label for="message">Mensaje:</label>
+        <textarea id="message" [(ngModel)]="mensaje.contenido" name="contenido" placeholder="Escribe tu mensaje..." required></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="closeModal2()">Cancelar</button>
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
   </div>
 </div>
+

@@ -26,32 +26,37 @@
 
 .message {
   cursor: pointer;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  word-wrap: break-word;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.message-details {
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin-top: 5px;
-  border-radius: 8px;
-  height: 80%;
+.message:hover {
+  background-color: #e0e0e0;
 }
 
 .container {
   display: flex;
-  height: 100%;
+  height: 80%;
 }
 
 .column-30 {
   width: 25%;
   padding: 10px;
-  height: 80%;
+  height: 106%;
   overflow-y: auto;
 }
 
 .column-70 {
   width: 70%;
   padding: 10px;
-  height: 80%;
+  height: 70%;
 }
 
 .message-container {
@@ -61,19 +66,101 @@
 }
 
 .message-container:last-child {
-  border-bottom: none; /* Elimina el borde inferior del último mensaje */
+  border-bottom: none;
   padding-bottom: 0;
   margin-bottom: 0;
 }
 
-.message {
-  cursor: pointer;
-  margin-bottom: 5px;
-  padding: 10px;
-  border-radius: 8px;
-  background-color: #f0f0f0;
+.timestamp {
+  align-self: flex-end;
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 10px;
 }
 
-.message:hover {
-  background-color: #e0e0e0;
+.message-details {
+  position: relative;
+  padding: 20px;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  width: 100%;
+  margin: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  overflow: hidden;
+  height: 80%;
 }
+
+.fecha {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-weight: bold;
+}
+
+.username {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.chat-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.chat-input button{
+  background-color: #0056a3;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.chat-input button:hover {
+  background-color: #184981;
+}
+
+.message-type-selector {
+  position: relative;
+  display: inline-block;
+}
+.selccionar{
+  background-color: #0056a3;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border-radius:5px ;
+  cursor: pointer;
+  border: none;
+}
+.selccionar:hover, .selccionar:focus {
+  background-color: #2980B9;
+}
+.dropdown{
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown button {
+  color: #0056a3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border: none;
+  width: 100%;
+}
+.dropdown button:hover {
+  background-color: #aeceed;
+}
+
+.message-type-selector:hover .dropdown {
+  display: block;
+}
+

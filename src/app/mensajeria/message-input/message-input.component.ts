@@ -1,24 +1,22 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FormsModule} from "@angular/forms";
-import {NgIf} from "@angular/common";
-import {ChatService} from "../../@api/mensajeria/chat.service";
+import {Component, EventEmitter, Output} from '@angular/core';
 import {ModalMensajeComponent} from "../modal-mensaje/modal-mensaje.component";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-message-input',
   standalone: true,
   imports: [
-    FormsModule,
-    NgIf,
-    ModalMensajeComponent
+    ModalMensajeComponent,
+    NgIf
   ],
   templateUrl: './message-input.component.html',
   styleUrl: './message-input.component.scss'
 })
 export class MessageInputComponent {
+  @Output() cambiartipo = new EventEmitter<string>();
   showModal: boolean = false;
 
-  constructor(private chatService: ChatService) {}
+  constructor() {}
 
   openMessageModal(): void {
     this.showModal = true;
@@ -26,5 +24,9 @@ export class MessageInputComponent {
 
   closeMessageModal(): void {
     this.showModal = false;
+  }
+
+  cambiarTipo(tipo:string): void {
+    this.cambiartipo.emit(tipo);
   }
 }

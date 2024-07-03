@@ -1,40 +1,81 @@
-<app-dropdown-menu (optionSelected)="onMenuOptionSelected($event)"></app-dropdown-menu>
-
-<div class="container">
+<!--<div class="container">
   <div class="column-30">
-    <div *ngIf="showSentMessages && selectedUser">
-      <h2>Mensajes Enviados</h2>
-      <div *ngFor="let message of sentMessages" class="message-container">
-        <div class="message" (click)="selectMessage(message)">
-          <span>{{ message.text }}</span>
-          <span class="timestamp">{{ message.timestamp | date:'short' }}</span>
-        </div>
+    <h2>Mensajes Enviados</h2>
+    <div class="message-container">
+      <div class="message">
+        <span class="username">Usuario: user1</span>
+        <span>Texto del mensaje 1</span>
+        <span class="timestamp">6/25/24, 12:18 AM</span>
       </div>
     </div>
-  
-    <div class="chat-window" *ngIf="!showSentMessages && allMessages.length > 0">
-      <div *ngFor="let userMessages of allMessages" class="user-messages">
-        <div *ngFor="let message of userMessages.messages" class="message-container">
-          <div class="message" (click)="selectMessage(message)">
-            <span>{{ message.text }}</span>
-            <span class="timestamp">{{ message.timestamp | date:'short' }}</span>
-          </div>
-        </div>
+    <div class="message-container">
+      <div class="message">
+        <span class="username">Usuario: user2</span>
+        <span>Texto del mensaje 2</span>
+        <span class="timestamp">6/25/24, 10:07 PM</span>
       </div>
     </div>
+
+     Agrega más mensajes aquí según sea necesario
   </div>
-  
-  
 
   <div class="column-70">
-    <div class="message-details" *ngIf="selectedMessage">
-      <h2>{{ selectedMessage.asunto }}</h2>
-      <p><strong>Texto del Mensaje:</strong> {{ selectedMessage.text }}</p>
-      <p><strong>Fecha y Hora:</strong> {{ selectedMessage.timestamp | date:'medium' }}</p>
-      <p *ngIf="selectedMessage.user"><strong>Usuario:</strong> {{ selectedMessage.user.name }}</p>
+    <div class="message-details">
+      <p><strong>Remitente:</strong> user1</p>
+      <p><strong>Destinatario:</strong> user2</p>
+      <h2>Asunto: Ejemplo de Asunto</h2>
+      <p><strong>Texto del Mensaje:</strong> Este es un mensaje de ejemplo.</p>
+      <p class="fecha"><strong>Fecha y Hora:</strong> 6/25/24, 12:18 AM</p>
+      <p><strong>Usuario:</strong> user1</p>
     </div>
   </div>
-  
-  
+</div>
+<div class="container">
+  <div class="column-30">
+    <h2>Mensajes Recibidos</h2>
+    <div class="message-container">
+      <div *ngFor="let mensaje of mensajes" class="message" (click)="seleccionarMensaje(mensaje)">
+        <span class="username">De: {{ mensaje.remitente }}</span>
+        <span>{{ mensaje.asunto }}</span>
+        <span class="timestamp">{{ mensaje.fechaEnvio | date:'short' }}</span>
+      </div>
+    </div>
+  </div>
 
+  <div class="column-70">
+    <div *ngIf="mensajeSeleccionado" class="message-details">
+    <p><strong>Remitente:</strong> {{ mensajeSeleccionado.remitente}}</p>
+    <h2>Asunto: {{ mensajeSeleccionado.asunto }}</h2>
+    <p><strong>Texto del Mensaje:</strong> {{ mensajeSeleccionado.contenido }}</p>
+    <p class="fecha"><strong>Fecha y Hora:</strong> {{ mensajeSeleccionado.fechaEnvio | date:'medium' }}</p>
+  </div>
+</div>
+</div>-->
+<div class="container">
+  <div class="column-30">
+    <div class="message-type-selector">
+      <button class="selccionar"> Seleccionar </button>
+      <div class="dropdown">
+        <button (click)="cambiarTipoMensajes('recibidos')" [class.active]="tipoMensajes === 'recibidos'">Mensajes Recibidos</button>
+        <button (click)="cambiarTipoMensajes('enviados')" [class.active]="tipoMensajes === 'enviados'">Mensajes Enviados</button>
+      </div>
+    </div>
+    <h2>{{ tipoMensajes === 'recibidos' ? 'Mensajes Recibidos' : 'Mensajes Enviados' }}</h2>
+    <div class="message-container">
+      <div *ngFor="let mensaje of mensajes" class="message" (click)="seleccionarMensaje(mensaje)">
+        <span class="username">{{ tipoMensajes === 'recibidos' ? 'De: ' : 'Para: ' }}{{ mensaje.remitente}}</span>
+        <span>{{ mensaje.asunto }}</span>
+        <span class="timestamp">{{ mensaje.fechaEnvio | date:'short' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="column-70">
+    <div *ngIf="mensajeSeleccionado" class="message-details">
+    <p><strong>{{ tipoMensajes === 'recibidos' ? 'Remitente:' : 'Destinatario:' }}</strong> {{ mensajeSeleccionado.remitente }}</p>
+    <h2>Asunto: {{ mensajeSeleccionado.asunto }}</h2>
+    <p><strong>Texto del Mensaje:</strong> {{ mensajeSeleccionado.contenido }}</p>
+    <p class="fecha"><strong>Fecha y Hora:</strong> {{ mensajeSeleccionado.fechaEnvio | date:'medium' }}</p>
+  </div>
+</div>
 </div>
