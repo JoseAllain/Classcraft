@@ -23,6 +23,11 @@ export class VEstudianteComponent implements OnInit {
   constructor(private router: Router, private cursoService: CursoService) { }
 
   ngOnInit() {
+    const id = localStorage.getItem('id');
+    if (!id) {
+      alert('Por favor Inicie Sesion')
+      this.router.navigate(['/']);
+    }
     this.cargarCursos();
   }
 

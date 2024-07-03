@@ -1,46 +1,23 @@
-<app-aula> 
 
-    
-    <div class="card-container">
+<app-aula>
+  <div class="ide">
+    <h3>Id Padre: {{idPadre}}</h3>
+  </div>
 
-
-        <a class="card"  (click)="mostrarCursos()">
-            <div class="card-content">
-                <h3>HIJO NRO 1</h3>
-        
-            </div>
-        </a>
-        <a class="card"  (click)="mostrarCursos()">
-            <div class="card-content">
-                <h3>HIJO NRO 2</h3>
-        
-            </div>
-        </a>
-        <a class="card"  (click)="mostrarCursos()">
-            <div class="card-content">
-                <h3>HIJO NRO 3</h3>
-        
-            </div>
-        </a>
-
-    </div>
-
-
-    <div style="text-align:center">
-
-        <div *ngIf="isVisible" class="card-container">
-          <a (click)="irAPagina('/aula/delatllesCurso')" class="card" *ngFor="let curso of courses">
-            <div class="card-content">
-              <h3>{{ curso.nombre }}</h3>
-              <p>Periodo: {{ curso.periodo }}</p>
-              <img [src]="curso.imagenUrl" alt="{{ curso.nombre }}">
-            </div>
-          </a>
-        </div>
+  <div class="card-container">
+    <a class="card" *ngFor="let hijo of hijos" (click)="seleccionarHijo(hijo.id)">
+      <div class="card-content">
+        <h3>{{ hijo.nombre }}</h3>
       </div>
+    </a>
+  </div>
 
-
-
-      
-    
+  <div *ngIf="cursosDelHijo.length > 0" class="card-container">
+    <a  class="card" *ngFor="let curso of cursosDelHijo">
+      <div class="card-content">
+        <h3>{{ curso.nombre }}</h3>
+        <p>Descripcion: {{ curso.descripcion }}</p>
+      </div>
+    </a>
+  </div>
 </app-aula>

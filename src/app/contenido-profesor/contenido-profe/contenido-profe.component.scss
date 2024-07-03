@@ -1,5 +1,4 @@
-
-.accordion {
+accordion {
   margin: 20px;
 }
 
@@ -55,7 +54,6 @@ button {
   background-color: #f9f9f9;
 }
 .contenidoArchivos {
-  border: 1px solid #ccc;
   border-radius: 8px;
   padding: 16px;
   width: auto;
@@ -70,4 +68,75 @@ button {
 .icon svg {
   width: 24px;
   height: 24px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.size-6 {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+//////
+/* CSS */
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  input{
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #007BFF;
+    border-radius: 4px;
+  }
+}
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 300px;
+  text-align: center;
+  color: black;
+}
+.modal-content button {
+  margin: 0 10px; /* Ajusta el margen entre los botones */
+  padding: 10px 20px; /* Ajusta el padding para un tamaño más cómodo */
+  font-size: 16px; /* Tamaño de fuente */
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: #007bff; /* Color de fondo */
+  color: white; /* Color del texto */
+  border-radius: 5px; /* Borde redondeado */
+}
+
+.modal-content button:hover {
+  background-color: #0056b3; /* Cambia el color de fondo al pasar el mouse */
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

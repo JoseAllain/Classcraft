@@ -45,4 +45,8 @@ export class VDatosUsuarioComponent {
       }
     });
   }
+
+  verId() {
+    return localStorage.getItem('id')
+  }
 }

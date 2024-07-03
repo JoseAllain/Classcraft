@@ -29,7 +29,7 @@ export interface InscripcionDTO {
   providedIn: 'root'
 })
 export class CursoService {
-  private apiUrl = 'http://35.91.182.170';
+  private apiUrl = 'http://34.213.134.64:8081';
 
   constructor(private http: HttpClient) { }
 

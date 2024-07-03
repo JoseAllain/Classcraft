@@ -6,6 +6,8 @@ import { NgForOf, NgIf } from "@angular/common";
 import { Router } from "@angular/router";
 import { Aula2Component } from "../aula2/aula2.component";
 import { RouterLink } from "@angular/router";
+import {MisHijos, UsuariosApiService} from "../../@api/apiUsuario/usuario-api.service";
+import {CursoDTO, CursoService} from "../../@api/apicurso/curso.service";
 
 @Component({
   selector: 'app-v-padre',
@@ -22,6 +24,44 @@ import { RouterLink } from "@angular/router";
   styleUrls: ['./vpadre.component.scss']
 })
 export class VPadreComponent implements OnInit {
+  hijos: MisHijos[] = [];
+  idPadre: number=0;
+  cursosDelHijo: CursoDTO[] = [];
+
+  constructor(private usuarioApiService: UsuariosApiService, private cursoService:CursoService,private router: Router) {}
+
+  ngOnInit() {
+    const id = localStorage.getItem('id');
+    if (!id) {
+      alert('Por favor Inicie Sesion')
+      this.router.navigate(['/']);
+    }
+    this.idPadre = +localStorage.getItem('id')!;
+    this.obtenerNombresHijos();
+  }
+
+  obtenerNombresHijos() {
+    this.usuarioApiService.obtenerNombresHijos(this.idPadre).subscribe({
+      next: (nombres) => {
+        this.hijos = nombres;
+      },
+      error: (error) => {
+        console.error('Error al obtener nombres de los hijos:', error);
+      }
+    });
+  }
+
+  seleccionarHijo(hijoId: number) {
+    this.cursoService.obtenerCursosDeEstudiante(hijoId).subscribe({
+      next: (cursos) => {
+        this.cursosDelHijo = cursos;
+      },
+      error: (error) => {
+        console.error('Error al cargar los cursos del estudiante:', error);
+      }
+    });
+  }
+  /*id = Number(localStorage.getItem('id'))
 
   isVisible = false;
   errorMessage = '';
@@ -70,5 +110,5 @@ export class VPadreComponent implements OnInit {
 
   irAPagina(ruta: string) {
     this.router.navigate([ruta]);
-  }
+  }*/
 }

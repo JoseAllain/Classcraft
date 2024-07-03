@@ -5,7 +5,7 @@
   height: 80px;
   margin-top: -20px;
   margin-left: -20px;
-  width: 110%;
+  width: 100%;
   display: flex;
   justify-content: left; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
@@ -32,10 +32,11 @@
   display: flex; /* Mostrar como flexbox */
   flex-wrap: wrap; /* Envolver las tarjetas cuando no quepan en una sola línea */
   gap: 20px; /* Espacio entre tarjetas */
+  width: 100%;
 }
 
 .card {
-  width: calc(33.33% - 20px); /* Ancho de cada tarjeta (ajustable según el número de tarjetas que quieras mostrar por fila) */
+  width: calc(30.3% - 20px); /* Ancho de cada tarjeta (ajustable según el número de tarjetas que quieras mostrar por fila) */
   background-color: #f0f0f0; /* Color de fondo opcional */
   padding: 20px; /* Espacio interno alrededor del contenido */
   margin-bottom: 20px; /* Margen inferior entre tarjetas */
@@ -90,4 +91,10 @@
   max-width: 100%; /* Establece el ancho máximo al tamaño del contenedor */
   height: auto; /* Permite que la altura se ajuste proporcionalmente */
   border-radius: 8px; /* Opcional: bordes redondeados para una apariencia suave */
+}
+.timestamp {
+  align-self: flex-end;
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 10px;
 }

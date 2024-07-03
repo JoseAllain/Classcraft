@@ -20,7 +20,7 @@ import {PanelService} from "../../@api/contenido Profesor/panel.service";
 })
 export class ContenidoProfeComponent {
   newPanelTitle: string = '';
-
+  fileName: string | null = null;
   constructor(public panelService: PanelService) {}
 
   togglePanel(panel: { isOpen: boolean }) {
@@ -44,4 +44,26 @@ export class ContenidoProfeComponent {
       this.panelService.addFileToCard(card, files[i]);
     }
   }
+
+  ////eliminar y cambiar/////////////////////
+  isMenuOpen = false;
+  isDeleteModalVisible = false;
+  isTextModalVisible = false;
+
+  showDeleteModal() {
+    this.isDeleteModalVisible = true;
+  }
+  textModal(){
+    this.isTextModalVisible = true;
+  }
+  hideDeleteModal() {
+    this.isDeleteModalVisible = false;
+    this.isTextModalVisible = false;
+  }
+
+  confirmDelete() {
+    // Implementa la lógica de eliminación aquí
+    this.hideDeleteModal();
+  }
+
 }
